@@ -211,8 +211,10 @@
     <!-- Page Header -->
     <header class="page-header">
         <div class="container reveal">
-            <h1>Ready for <span style="color: #fff;">Dependable</span> Plumbing Solutions?</h1>
-            <p>We've removed all the friction. Transparent pricing, massive service area, and every payment method
+            <h1 data-invoks="contact-hero-title" data-invoks-html>Ready for <span style="color: #fff;">Dependable</span>
+                Plumbing Solutions?</h1>
+            <p data-invoks="contact-hero-desc">We've removed all the friction. Transparent pricing, massive service
+                area, and every payment method
                 accepted.</p>
         </div>
     </header>
@@ -226,30 +228,37 @@
 
 
                 <div class="info-card">
-                    <h3><i class="fa-solid fa-phone-volume"></i> Direct Communication</h3>
+                    <h3 data-invoks="contact-comm-title" data-invoks-html><i class="fa-solid fa-phone-volume"></i>
+                        Direct Communication</h3>
                     <a href="tel:8316765115" class="phone-huge">(831) 676-5115</a>
                 </div>
 
                 <div class="info-card">
-                    <h3><i class="fa-solid fa-clock"></i> Standard Operating Hours</h3>
+                    <h3 data-invoks="contact-hours-title" data-invoks-html><i class="fa-solid fa-clock"></i> Standard
+                        Operating Hours</h3>
                     <p>Monday – Sunday: <strong>7:00 AM - 5:00 PM (PST)</strong></p>
                 </div>
 
                 <div class="info-card">
-                    <h3><i class="fa-solid fa-map-location-dot"></i> Our Coverage Zone</h3>
-                    <p>We proudly and efficiently dispatch to the diverse communities of the Tri-County area:</p>
+                    <h3 data-invoks="contact-coverage-title" data-invoks-html><i
+                            class="fa-solid fa-map-location-dot"></i> Our Coverage Zone</h3>
+                    <p data-invoks="contact-coverage-desc">We proudly and efficiently dispatch to the diverse
+                        communities of the Tri-County area:</p>
                     <ul class="detail-list">
                         <li><i class="fa-solid fa-location-arrow"></i> <strong>Monterey County</strong></li>
                         <li><i class="fa-solid fa-location-arrow"></i> <strong>Santa Clara County</strong></li>
                         <li><i class="fa-solid fa-location-arrow"></i> <strong>Santa Cruz County</strong></li>
                     </ul>
-                    <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-tertiary);">Including: Salinas,
+                    <p data-invoks="contact-coverage-cities"
+                        style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-tertiary);">Including: Salinas,
                         Gilroy, Seaside, Soledad, and surrounding areas.</p>
                 </div>
 
                 <div class="info-card">
-                    <h3><i class="fa-solid fa-credit-card"></i> Frictionless Payments</h3>
-                    <p>We make the payment process as smooth as our pipe installations. We accept a massive spectrum of
+                    <h3 data-invoks="contact-payments-title" data-invoks-html><i class="fa-solid fa-credit-card"></i>
+                        Frictionless Payments</h3>
+                    <p data-invoks="contact-payments-desc">We make the payment process as smooth as our pipe
+                        installations. We accept a massive spectrum of
                         payment modalities:</p>
                     <div class="payment-icons">
                         <i class="fa-brands fa-apple-pay" title="Apple Pay"></i>
@@ -266,29 +275,35 @@
             <!-- Contact Form -->
             <div class="contact-form-container reveal" style="transition-delay: 0.2s;">
                 <div class="glass-card glowing-blue-box">
-                    <h2 style="font-size: 2rem; margin-bottom: 2rem;">Schedule Appointment Here!</h2>
+                    <h2 data-invoks="contact-form-title" style="font-size: 2rem; margin-bottom: 2rem;">Schedule
+                        Appointment Here!</h2>
 
-                    <!-- Form currently submitts nowhere as this is a frontend build -->
-                    <form action="#" method="POST"
-                        onsubmit="event.preventDefault(); alert('Demo: Form submitted successfully!');">
+                    <!-- Form that submits to myinvoks API -->
+                    <form id="contact-form">
+                        <!-- Anti-spam honeypot field -->
+                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
                         <div class="form-group">
                             <label for="name" class="form-label">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="John Doe"
+                                required>
                         </div>
 
                         <div class="form-group">
                             <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="(831) 555-0123" required>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="(831) 555-0123"
+                                required>
                         </div>
 
                         <div class="form-group">
                             <label for="email" class="form-label">Email Address (Optional)</label>
-                            <input type="email" id="email" class="form-control" placeholder="johndoe@example.com">
+                            <input type="email" id="email" name="email" class="form-control"
+                                placeholder="johndoe@example.com">
                         </div>
 
                         <div class="form-group">
                             <label for="service" class="form-label">Service Needed</label>
-                            <select id="service" class="form-control" required
+                            <select id="service" name="service" class="form-control" required
                                 style="appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%239aa0a6%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65em auto;">
                                 <option value="" disabled selected>Select an option...</option>
                                 <option value="emergency">Emergency Repair (Immediate)</option>
@@ -302,16 +317,65 @@
 
                         <div class="form-group">
                             <label for="message" class="form-label">Project Details</label>
-                            <textarea id="message" class="form-control"
+                            <textarea id="message" name="message" class="form-control"
                                 placeholder="Please describe your plumbing issue or remodeling project..."
                                 required></textarea>
                         </div>
 
-                        <button type="submit" class="animated-button">
-                            <p>Request Professional Service</p>
+                        <button type="submit" id="submit-btn" class="animated-button">
+                            <p id="btn-text">Request Professional Service</p>
                         </button>
 
+                        <div id="form-success-msg"
+                            style="display: none; color: #4ade80; margin-top: 1rem; text-align: center; font-weight: 500;">
+                            Message sent successfully! We will get in touch soon.
+                        </div>
+
                     </form>
+
+                    <script>
+                        document.getElementById('contact-form').addEventListener('submit', async function (e) {
+                            e.preventDefault();
+
+                            const form = e.target;
+                            const submitBtn = document.getElementById('submit-btn');
+                            const btnText = document.getElementById('btn-text');
+                            const successMsg = document.getElementById('form-success-msg');
+
+                            // Change button state
+                            submitBtn.disabled = true;
+                            const originalText = btnText.innerText;
+                            btnText.innerText = 'Sending...';
+                            successMsg.style.display = 'none';
+
+                            try {
+                                const formData = new FormData(form);
+
+                                const response = await fetch('https://www.myinvoks.com/api/submit/cmmdzedn70001w56e7p77i8ls', {
+                                    method: 'POST',
+                                    body: formData,
+                                    // CORS is handled by backend, no need for complex headers
+                                });
+
+                                if (response.ok) {
+                                    // Success
+                                    form.reset();
+                                    successMsg.style.display = 'block';
+                                } else {
+                                    // Error response
+                                    alert('There was a problem submitting the form. Please try again.');
+                                }
+                            } catch (error) {
+                                // Network error
+                                alert('Network error. Please check your connection and try again.');
+                                console.error('Submission error:', error);
+                            } finally {
+                                // Restore button state
+                                submitBtn.disabled = false;
+                                btnText.innerText = originalText;
+                            }
+                        });
+                    </script>
                 </div>
             </div>
 
@@ -361,6 +425,7 @@
     </footer>
 
     <script src="main.js?v=14"></script>
+    <script src="https://www.myinvoks.com/sdk.js" data-project="cmmdzedn70001w56e7p77i8ls"></script>
 </body>
 
 </html>
