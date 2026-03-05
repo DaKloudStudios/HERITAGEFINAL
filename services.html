@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Heritage Plumbing Pros</title>
+    <meta name="description"
+        content="Explore our technical and architectural services: Systemic Infrastructure Modernization, Architectural Remodeling, Advanced Water Quality, and Exterior Environmental Management.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css?v=14">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ========================================
+           SERVICES PAGE — PREMIUM REDESIGN
+           ======================================== */
+
+        /* --- Page Header Slideshow Background --- */
+        .page-header {
+            position: relative;
+            background-color: var(--navy);
+            color: #ffffff;
+            padding: 8rem 0 5rem;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .page-header::before {
+            display: none;
+            /* Removed single pseudo-element bg */
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 30, 61, 0.85) 0%, rgba(15, 30, 61, 0.6) 100%);
+            z-index: 0;
+        }
+
+        .header-bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            opacity: 0;
+            animation: smoothFade 20s infinite;
+        }
+
+        .bg-img-1 {
+            background-image: url('FOTOS/P1.webp');
+            animation-delay: 0s;
+        }
+
+        .bg-img-2 {
+            background-image: url('FOTOS/P3.webp');
+            animation-delay: 5s;
+        }
+
+        .bg-img-3 {
+            background-image: url('FOTOS/P4.png');
+            animation-delay: 10s;
+        }
+
+        .bg-img-4 {
+            background-image: url('FOTOS/P6.webp');
+            animation-delay: 15s;
+        }
+
+        @keyframes smoothFade {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            25% {
+                opacity: 1;
+            }
+
+            35% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* --- Animated Counter / Stats Bar --- */
+        .services-stats-bar {
+            background: linear-gradient(135deg, rgba(15, 30, 61, 0.03) 0%, transparent 60%);
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 3rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-block {
+            position: relative;
+        }
+
+        .stat-block::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+        }
+
+        .stat-block:last-child::after {
+            display: none;
+        }
+
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        /* --- Service Showcase 3D Carousel --- */
+        .services-showcase {
+            padding: 4rem 0 8rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            perspective: 1500px;
+        }
+
+        .services-carousel-container {
+            width: 100%;
+            max-width: 1000px;
+            height: 600px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .services-carousel {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .service-showcase-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            /* JavaScript will calculate the exact rotateY and translateZ values */
+            transition: opacity 0.5s ease;
+        }
+
+        /* Carousel Navigation Controls */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            position: absolute;
+            bottom: -5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid rgba(15, 30, 61, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            color: var(--navy);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--navy);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(15, 30, 61, 0.2);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(15, 30, 61, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--navy);
+            transform: scale(1.3);
+        }
+
+        .service-card-premium {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.08);
+            height: 100%;
+        }
+
+        .service-card-premium.reverse {
+            direction: rtl;
+        }
+
+        .service-card-premium.reverse>* {
+            direction: ltr;
+        }
+
+        .service-visual-side {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+        }
+
+        @property --border-angle {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: 0deg;
+        }
+
+        /* Animated Water Border (Around entire card) */
+        .service-card-premium::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            border: 4px solid transparent;
+            background: conic-gradient(from var(--border-angle),
+                    transparent 0%,
+                    rgba(73, 142, 230, 0.3) 10%,
+                    rgb(73, 142, 230) 20%,
+                    #1a73e8 25%,
+                    rgb(73, 142, 230) 30%,
+                    rgba(73, 142, 230, 0.3) 40%,
+                    transparent 50%,
+                    transparent 50%,
+                    rgba(73, 142, 230, 0.3) 60%,
+                    rgb(73, 142, 230) 70%,
+                    #1a73e8 75%,
+                    rgb(73, 142, 230) 80%,
+                    rgba(73, 142, 230, 0.3) 90%,
+                    transparent 100%) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 10;
+            animation: waterBorderRotate 4s linear infinite;
+        }
+
+        @keyframes waterBorderRotate {
+            to {
+                --border-angle: 360deg;
+            }
+        }
+
+        .service-bg-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16rem;
+            color: rgba(255, 255, 255, 0.8);
+            /* Increased opacity from 0.04 to 0.2 for better visibility */
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), color 0.8s ease;
+            z-index: 1;
+        }
+
+        .service-card-premium:hover .service-bg-icon {
+            transform: translate(-50%, -50%) scale(1.1);
+            color: rgba(255, 255, 255, 1);
+            /* Increased hover opacity from 0.1 to 0.4 */
+        }
+
+        .service-visual-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(15, 30, 61, 0.6) 100%);
+            z-index: 0;
+        }
+
+        .service-visual-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+        }
+
+        .service-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 8rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: absolute;
+            top: 1.5rem;
+            left: 2.5rem;
+        }
+
+        .service-icon-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            backdrop-filter: blur(10px);
+            margin-bottom: 1rem;
+        }
+
+        .service-visual-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0;
+        }
+
+        /* Content Side */
+        .service-content-side {
+            padding: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-tag::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--navy);
+        }
+
+        .service-content-side h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .service-content-side p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .service-features li i {
+            color: var(--navy);
+            font-size: 0.75rem;
+        }
+
+        .service-cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--navy);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .service-cta-link:hover {
+            gap: 1.25rem;
+            color: #e0ff70;
+        }
+
+        .service-cta-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .service-cta-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* --- Why Choose Section --- */
+        .why-choose-section {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-dark) 100%);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .why-choose-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .why-choose-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-choose-header p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .why-card {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--navy), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(15, 30, 61, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-card:hover::before {
+            opacity: 1;
+        }
+
+        .why-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(15, 30, 61, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--navy);
+            transition: all 0.4s ease;
+        }
+
+        .why-card:hover .why-icon {
+            background: rgba(15, 30, 61, 0.1);
+            transform: scale(1.1);
+        }
+
+        .why-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .why-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section-premium {
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section-premium::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(15, 30, 61, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section-premium h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .cta-section-premium p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            position: relative;
+        }
+
+        .cta-section-premium .btn-lime {
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+            position: relative;
+        }
+
+        /* --- Scroll-triggered animations --- */
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .slide-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .slide-in-left.active,
+        .slide-in-right.active,
+        .slide-in-up.active,
+        .scale-in.active {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+
+        /* Staggered children */
+        .stagger-children>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-children>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-children>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-children>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .services-carousel-container {
+                height: 800px;
+            }
+
+            .service-card-premium {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .service-card-premium.reverse {
+                direction: ltr;
+            }
+
+            .service-visual-side {
+                height: 300px;
+                min-height: auto;
+            }
+
+            .service-number {
+                font-size: 5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-block:nth-child(2)::after {
+                display: none;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+
+            .services-carousel-container {
+                height: 900px;
+            }
+
+            .service-content-side {
+                padding: 2rem;
+            }
+
+            .service-content-side h2 {
+                font-size: 1.8rem;
+            }
+
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+
+            .services-showcase {
+                padding: 3rem 0;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-choose-header h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section-premium h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* ========================================
+           PREMIUM ANIMATED BACKGROUND & GLASSMORPHISM
+           ======================================== */
+        .premium-animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -10;
+            background: linear-gradient(120deg, #091225, #0f1e3d, #1a3160, #00509e, #0f1e3d);
+            background-size: 300% 300%;
+            animation: gradient-flow 18s ease infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Glassmorphism Overrides */
+        body {
+            background-color: transparent !important;
+            color: #fff !important;
+        }
+
+        .navbar {
+            background: rgba(9, 18, 37, 0.6) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        }
+
+        .navbar.scrolled {
+            background: rgba(9, 18, 37, 0.95) !important;
+        }
+
+        .nav-links a,
+        .logo {
+            color: #fff !important;
+        }
+
+        .nav-links a::after {
+            background-color: #00f2fe !important;
+        }
+
+        .btn-icon-circle {
+            color: #fff !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .page-header {
+            background: transparent !important;
+            border-bottom: none !important;
+            padding-bottom: 40px !important;
+        }
+
+        .services-stats-bar {
+            background: rgba(255, 255, 255, 0.03) !important;
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        }
+
+        .stat-number {
+            -webkit-text-fill-color: #00f2fe !important;
+            background: none !important;
+            color: #00f2fe !important;
+        }
+
+        .stat-description {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        .service-card-premium {
+            background: rgba(15, 30, 61, 0.4) !important;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        .service-content-side h2 {
+            color: #fff !important;
+        }
+
+        .service-content-side p {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .service-tag {
+            color: #00f2fe !important;
+        }
+
+        .service-tag::before {
+            background: #00f2fe !important;
+        }
+
+        .service-features li {
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+
+        .service-features li i {
+            color: #00f2fe !important;
+        }
+
+        .service-cta-link {
+            color: #00f2fe !important;
+        }
+
+        .why-choose-section {
+            background: rgba(255, 255, 255, 0.02) !important;
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+        }
+
+        .why-choose-header h2 {
+            color: #fff !important;
+        }
+
+        .why-choose-header p {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.03) !important;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .why-card h3 {
+            color: #fff !important;
+        }
+
+        .why-card p {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        .why-icon {
+            background: rgba(0, 242, 254, 0.1) !important;
+            color: #00f2fe !important;
+        }
+
+        .why-card:hover {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(0, 242, 254, 0.3) !important;
+        }
+
+        .cta-section-premium h2 {
+            color: #fff !important;
+        }
+
+        .cta-section-premium p {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="premium-animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-wrench"></i>
+                    Heritage <span>Plumbing Pros</span>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn-lime">Schedule Appointment</a>
+                <a href="contact.html" class="btn-icon-circle"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <button class="mobile-menu-btn" style="color: #fff;">&#9776;</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="header-bg-layer bg-img-1"></div>
+        <div class="header-bg-layer bg-img-2"></div>
+        <div class="header-bg-layer bg-img-3"></div>
+        <div class="header-bg-layer bg-img-4"></div>
+
+        <div class="container reveal" style="position: relative; z-index: 2;">
+            <h1>Our <span style="color: #fff;">Technical & Architectural</span> Services</h1>
+            <p>We transcend traditional utilitarian plumbing by offering specialized design-build solutions alongside
+                essential infrastructure upgrades.</p>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <section class="services-stats-bar">
+        <div class="container">
+            <div class="stats-grid stagger-children">
+                <div class="stat-block slide-in-up">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-description">Projects Completed</div>
+                </div>
+                <div class="stat-block slide-in-up">
+                    <div class="stat-number">5.0</div>
+                    <div class="stat-description">Thumbtack Rating</div>
+                </div>
+                <div class="stat-block slide-in-up">
+                    <div class="stat-number">3</div>
+                    <div class="stat-description">Counties Served</div>
+                </div>
+                <div class="stat-block slide-in-up">
+                    <div class="stat-number">$0</div>
+                    <div class="stat-description">Dispatch Fee On Hire</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Showcase 3D Carousel -->
+    <section class="services-showcase container">
+        <div class="services-carousel-container">
+            <div class="services-carousel" id="servicesCarousel">
+
+                <!-- Service 1: Infrastructure Modernization -->
+                <div class="service-showcase-item" id="infrastructure">
+                    <div class="service-card-premium">
+                        <div class="service-visual-side">
+                            <i class="fa-solid fa-network-wired service-bg-icon"></i>
+                            <div class="service-visual-overlay"></div>
+                            <div class="service-visual-content">
+                                <div class="service-number">01</div>
+                                <div class="service-icon-badge">
+                                    <i class="fa-solid fa-network-wired"></i>
+                                </div>
+                                <div class="service-visual-title">Infrastructure Modernization</div>
+                            </div>
+                        </div>
+                        <div class="service-content-side">
+                            <div class="service-tag">Core Service</div>
+                            <h2>Systemic Infrastructure Modernization</h2>
+                            <p>Are you dealing with rusty water, low pressure, or the constant threat of pinhole leaks?
+                                Older California homes often rely on outdated galvanized steel pipes that corrode from
+                                the
+                                inside out.</p>
+                            <p>We specialize in total infrastructure modernization, replacing failing steel with a
+                                state-of-the-art hybrid system using highly flexible PEX tubing and rigid, antimicrobial
+                                copper piping.</p>
+                            <ul class="service-features">
+                                <li><i class="fa-solid fa-circle-check"></i> PEX & Copper Hybrid</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Minimal Drywall Damage</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Improved Flow Rates</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Heavy Metal Removal</li>
+                            </ul>
+                            <a href="contact.html" class="service-cta-link">Schedule a Consultation <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Architectural Remodeling -->
+                <div class="service-showcase-item" id="remodeling">
+                    <div class="service-card-premium reverse">
+                        <div class="service-visual-side">
+                            <i class="fa-solid fa-sink service-bg-icon"></i>
+                            <div class="service-visual-overlay"></div>
+                            <div class="service-visual-content">
+                                <div class="service-number">02</div>
+                                <div class="service-icon-badge">
+                                    <i class="fa-solid fa-sink"></i>
+                                </div>
+                                <div class="service-visual-title">Architectural Remodeling</div>
+                            </div>
+                        </div>
+                        <div class="service-content-side">
+                            <div class="service-tag">Design-Build</div>
+                            <h2>Architectural Remodeling & Bespoke Finishes</h2>
+                            <p>Transform your outdated bathroom into a seamless, high-end sanctuary. We are specialized
+                                design-build experts installing luxurious, handmade microcement walls that deliver a
+                                sleek
+                                modern aesthetic.</p>
+                            <p>Our architectural expertise includes custom floor drain relocations and precision "1-Day
+                                Installation" tub-to-walk-in-shower conversions.</p>
+                            <ul class="service-features">
+                                <li><i class="fa-solid fa-circle-check"></i> Microcement Walls</li>
+                                <li><i class="fa-solid fa-circle-check"></i> 1-Day Conversions</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Custom Drain Relocation</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Barrier-Free Layouts</li>
+                            </ul>
+                            <a href="contact.html" class="service-cta-link">Schedule a Consultation <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Advanced Water Quality -->
+                <div class="service-showcase-item" id="water-quality">
+                    <div class="service-card-premium">
+                        <div class="service-visual-side">
+                            <i class="fa-solid fa-faucet-drip service-bg-icon"></i>
+                            <div class="service-visual-overlay"></div>
+                            <div class="service-visual-content">
+                                <div class="service-number">03</div>
+                                <div class="service-visual-title">Water Quality Solutions</div>
+                            </div>
+                        </div>
+                        <div class="service-content-side">
+                            <div class="service-tag">Water Systems</div>
+                            <h2>Advanced Water Quality</h2>
+                            <p>The Salinas Valley is known to suffer from hard, mineral-heavy municipal water, which can
+                                wreak havoc on your interior plumbing and slowly destroy expensive tankless water
+                                heaters.
+                            </p>
+                            <p>Protect your investment and your family with our comprehensive whole-house water
+                                filtration
+                                systems, purifying your water from the moment it enters your home.</p>
+                            <ul class="service-features">
+                                <li><i class="fa-solid fa-circle-check"></i> Whole-House Filtration</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Bypass Valve Included</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Fixture Lifespan Boost</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Zero Downtime Maintenance</li>
+                            </ul>
+                            <a href="contact.html" class="service-cta-link">Schedule a Consultation <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: Exterior Environmental Management -->
+                <div class="service-showcase-item" id="exterior">
+                    <div class="service-card-premium reverse">
+                        <div class="service-visual-side">
+                            <i class="fa-solid fa-house-crack service-bg-icon"></i>
+                            <div class="service-visual-overlay"></div>
+                            <div class="service-visual-content">
+                                <div class="service-number">04</div>
+                                <div class="service-icon-badge">
+                                    <i class="fa-solid fa-house-crack"></i>
+                                </div>
+                                <div class="service-visual-title">Exterior Drainage</div>
+                            </div>
+                        </div>
+                        <div class="service-content-side">
+                            <div class="service-tag">Property Protection</div>
+                            <h2>Exterior Environmental Management</h2>
+                            <p>California's volatile atmospheric river events pose a massive threat to your home's
+                                foundation. Immense volumes of sudden precipitation can cause subterranean crawl spaces
+                                to
+                                flood and concrete foundations to fracture.</p>
+                            <p>We protect your property's structural envelope through advanced exterior fluid
+                                dynamics—expertly
+                                installing perimeter gutters connected to underground drain pipes.</p>
+                            <ul class="service-features">
+                                <li><i class="fa-solid fa-circle-check"></i> Perimeter Gutters</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Underground Drains</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Foundation Shield</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Storm Water Routing</li>
+                            </ul>
+                            <a href="contact.html" class="service-cta-link">Schedule a Consultation <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Controls -->
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prevSlide"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="carousel-dots" id="carouselDots">
+                    <!-- Dots generated via JS -->
+                </div>
+                <button class="carousel-btn" id="nextSlide"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="why-choose-header reveal">
+                <h2>Why Choose <span style="color: #fff;">Heritage</span>?</h2>
+                <p>We don't just fix plumbing — we engineer lasting solutions built on transparency, skill, and respect
+                    for your home.</p>
+            </div>
+            <div class="why-choose-grid stagger-children">
+                <div class="why-card slide-in-up">
+                    <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Licensed & Insured</h3>
+                    <p>CA CSLB C-36 Licensed with full workers' compensation and liability coverage. Your home is always
+                        protected.</p>
+                </div>
+                <div class="why-card slide-in-up">
+                    <div class="why-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <h3>Honest Pricing</h3>
+                    <p>No hidden fees, no upsells, no surprises. We provide transparent quotes so you always know what
+                        you're paying for.</p>
+                </div>
+                <div class="why-card slide-in-up">
+                    <div class="why-icon"><i class="fa-solid fa-camera"></i></div>
+                    <h3>Photo Proof Guarantee</h3>
+                    <p>We document every job with high-resolution before-and-after photos so you can see exactly what
+                        was
+                        done.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section-premium">
+        <div class="container reveal">
+            <h2>Ready to <span class="text-gradient">Upgrade</span> Your Property?</h2>
+            <p>No matter the size of the job, we bring the same level of artisan craftsmanship and honest pricing.</p>
+            <a href="contact.html" class="btn-lime" style="display: inline-block;">Schedule Your Appointment <i
+                    class="fa-solid fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+                        <i class="fa-solid fa-wrench"></i>
+                        Heritage <span>Plumbing Pros</span>
+                    </a>
+                    <p>Dependable plumbing solutions within your reach. No cutting-corners, honest pricing.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fa-solid fa-phone" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                        (831) 676-5115</p>
+                    <p><i class="fa-solid fa-clock" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                        Mon-Sun: 7:00 AM - 5:00 PM</p>
+                    <p style="font-weight: 600;"><i class="fa-solid fa-truck-medical"
+                            style="margin-right: 0.5rem; color: var(--primary-color);"></i> Emergency Repairs</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Location</h4>
+                    <p>Serving Monterey, Santa Clara, and Santa Cruz Counties.</p>
+                    <p style="font-size: 0.85rem; margin-top: 1rem; color: var(--text-tertiary);">
+                        1520 Constitution Blvd<br>Salinas, CA 93905
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Heritage Plumbing Pros. All Rights Reserved. CA CSLB C-36 Licensed.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js?v=14"></script>
+    <script>
+        // Enhanced scroll animations for the services page
+        const animObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-up, .scale-in').forEach(el => {
+            animObserver.observe(el);
+        });
+
+        // 3D Carousel JS
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('servicesCarousel');
+            if (!carousel) return;
+
+            const items = carousel.querySelectorAll('.service-showcase-item');
+            const dotsContainer = document.getElementById('carouselDots');
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
+
+            const cellCount = items.length;
+            let selectedIndex = 0;
+            const radius = Math.round((carousel.offsetWidth / 2) / Math.tan(Math.PI / cellCount));
+            const theta = 360 / cellCount;
+
+            // Initialize position of each card in 3D space
+            const initCarousel = () => {
+                items.forEach((item, i) => {
+                    const rotateY = i * theta;
+                    item.style.transform = `rotateY(${rotateY}deg) translateZ(${radius}px)`;
+
+                    // Create dots
+                    const dot = document.createElement('div');
+                    dot.classList.add('carousel-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.dataset.index = i;
+                    dot.addEventListener('click', () => {
+                        selectedIndex = i;
+                        rotateCarousel();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+                rotateCarousel();
+            };
+
+            const rotateCarousel = () => {
+                const angle = theta * selectedIndex * -1;
+                carousel.style.transform = `translateZ(${-radius}px) rotateY(${angle}deg)`;
+
+                // Update opacity/visualization
+                items.forEach((item, i) => {
+                    // Normalize the active index to handle wrapping
+                    const normalizedActive = ((selectedIndex % cellCount) + cellCount) % cellCount;
+                    if (i === normalizedActive) {
+                        item.style.opacity = '1';
+                        item.style.pointerEvents = 'auto';
+                    } else {
+                        item.style.opacity = '0.1';
+                        item.style.pointerEvents = 'none';
+                    }
+                });
+
+                // Update dots
+                const dots = document.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, i) => {
+                    const normalizedActive = ((selectedIndex % cellCount) + cellCount) % cellCount;
+                    dot.classList.toggle('active', i === normalizedActive);
+                });
+            };
+
+            prevBtn.addEventListener('click', () => {
+                selectedIndex--;
+                rotateCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                selectedIndex++;
+                rotateCarousel();
+            });
+
+            // Recalculate radius on resize
+            window.addEventListener('resize', () => {
+                const newRadius = Math.round((carousel.offsetWidth / 2) / Math.tan(Math.PI / cellCount));
+                items.forEach((item, i) => {
+                    const rotateY = i * theta;
+                    item.style.transform = `rotateY(${rotateY}deg) translateZ(${newRadius}px)`;
+                });
+                rotateCarousel();
+            });
+
+            initCarousel();
+        });
+    </script>
+</body>
+
+</html>

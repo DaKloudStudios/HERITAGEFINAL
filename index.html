@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Plumbing Pros | Dependable Plumbing Solutions</title>
+    <meta name="description"
+        content="Expert craftsmanship, honest pricing, and strict industry standards. Emergency repairs, architectural remodeling, and dependable plumbing solutions in the Central Coast.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css?v=14">
+    <!-- Simple Icon Font for placeholders -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ========================================
+           NEW HERO — CLEAN WHITE DESIGN
+           ======================================== */
+        .hero-new {
+            background-color: #f0f9ff;
+            padding: 120px 1rem 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 120px);
+            z-index: 1;
+        }
+
+        .hero-new>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .liquid-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+            /* Applying gooey filter using SVG or just heavy blur */
+            filter: blur(25px);
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            animation: morphLiquid 15s infinite alternate ease-in-out;
+            transform-origin: center;
+        }
+
+        .blob-1 {
+            width: 700px;
+            height: 700px;
+            background: rgba(0, 180, 255, 0.45);
+            left: var(--x, 50%);
+            top: var(--y, 50%);
+            transform: translate(-50%, -50%);
+            transition: left 0.8s cubic-bezier(0.1, 0.8, 0.2, 1), top 0.8s cubic-bezier(0.1, 0.8, 0.2, 1);
+        }
+
+        .blob-2 {
+            width: 550px;
+            height: 800px;
+            background: rgba(0, 242, 254, 0.4);
+            left: calc(var(--x, 50%) + 180px);
+            top: calc(var(--y, 50%) - 120px);
+            transform: translate(-50%, -50%);
+            transition: left 1.2s cubic-bezier(0.1, 0.8, 0.2, 1), top 1.2s cubic-bezier(0.1, 0.8, 0.2, 1);
+            animation-delay: -3s;
+        }
+
+        .blob-3 {
+            width: 800px;
+            height: 550px;
+            background: rgba(15, 30, 61, 0.25);
+            /* Navy accent */
+            left: calc(var(--x, 50%) - 180px);
+            top: calc(var(--y, 50%) + 150px);
+            transform: translate(-50%, -50%);
+            transition: left 1.5s cubic-bezier(0.1, 0.8, 0.2, 1), top 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+            animation-delay: -6s;
+        }
+
+        @keyframes morphLiquid {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) scale(1);
+                border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+            }
+
+            33% {
+                transform: translate(-50%, -50%) rotate(90deg) scale(1.1);
+                border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+            }
+
+            66% {
+                transform: translate(-50%, -50%) rotate(180deg) scale(0.9);
+                border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) scale(1.05);
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            }
+        }
+
+        /* Override navbar for white hero */
+        .navbar-light {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid #eee !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        .navbar-light .nav-links a {
+            color: #1a1c22 !important;
+        }
+
+        .navbar-light .nav-links a::after {
+            background-color: var(--navy);
+        }
+
+        .navbar-light .btn-icon-circle {
+            border-color: rgba(0, 0, 0, 0.15) !important;
+            color: #1a1c22 !important;
+        }
+
+        .navbar-light .mobile-menu-btn {
+            color: #1a1c22 !important;
+        }
+
+        /* Badge Pill */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #f4f4f5;
+            border: 1px solid #e4e4e7;
+            border-radius: 50px;
+            padding: 0.5rem 1.25rem;
+            font-size: 0.9rem;
+            color: #52525b;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .hero-badge:hover {
+            border-color: #d4d4d8;
+            background: #ececed;
+        }
+
+        .hero-badge .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--navy);
+            animation: badge-pulse 2s infinite;
+        }
+
+        @keyframes badge-pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .hero-badge a {
+            color: #7c3aed;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .hero-badge a:hover {
+            color: #6d28d9;
+        }
+
+        /* Headline */
+        .hero-new h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #18181b;
+            line-height: 1.15;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-new .hero-subtitle {
+            font-size: 1.2rem;
+            color: #71717a;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* CTA Buttons */
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 5rem;
+        }
+
+        .cta-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--navy);
+            border-radius: 8px;
+            color: var(--navy);
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            background: transparent;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .cta-outline:hover {
+            background-color: var(--navy);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(15, 30, 61, 0.2);
+        }
+
+        .cta-outline i {
+            color: inherit;
+        }
+
+        .cta-filled {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--navy);
+            color: #fff;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(15, 30, 61, 0.3);
+        }
+
+        .cta-filled:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(15, 30, 61, 0.4);
+            color: #fff;
+        }
+
+        /* Portrait Cards Row */
+        .team-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .team-carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 0 2rem;
+        }
+
+        .team-card {
+            flex: 0 0 200px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #f9fafb;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-card.featured {
+            flex: 0 0 240px;
+            transform: translateY(-20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-card.featured:hover {
+            transform: translateY(-28px);
+        }
+
+        .team-card-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.4s ease;
+        }
+
+        .team-card.featured .team-card-img {
+            height: 300px;
+        }
+
+        .team-card:hover .team-card-img {
+            filter: grayscale(0%);
+        }
+
+        .team-card-info {
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.95);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            backdrop-filter: blur(8px);
+        }
+
+        .team-card-info h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #18181b;
+            margin-bottom: 0.1rem;
+        }
+
+        .team-card-info p {
+            font-size: 0.8rem;
+            color: #71717a;
+            margin-bottom: 0;
+        }
+
+        /* Animation for hero content */
+        .hero-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        .hero-fade-in:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .hero-fade-in:nth-child(2) {
+            animation-delay: 0.25s;
+        }
+
+        .hero-fade-in:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .hero-fade-in:nth-child(4) {
+            animation-delay: 0.55s;
+        }
+
+        .hero-fade-in:nth-child(5) {
+            animation-delay: 0.7s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-new h1 {
+                font-size: 3rem;
+            }
+
+            .team-card {
+                flex: 0 0 170px;
+            }
+
+            .team-card.featured {
+                flex: 0 0 200px;
+            }
+
+            .team-card-img {
+                height: 220px;
+            }
+
+            .team-card.featured .team-card-img {
+                height: 260px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-new {
+                padding: 130px 1rem 60px;
+            }
+
+            .hero-new h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-new .hero-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+                margin-bottom: 3rem;
+            }
+
+            .team-carousel-track {
+                justify-content: flex-start;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 1rem;
+            }
+
+            .team-card {
+                flex: 0 0 160px;
+                scroll-snap-align: center;
+            }
+
+            .team-card.featured {
+                flex: 0 0 180px;
+                transform: translateY(-10px);
+            }
+        }
+
+        /* ========================================
+           GALLERY SECTION
+           ======================================== */
+        .gallery-section {
+            background: var(--bg-surface);
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-tab {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-tab:hover {
+            border-color: var(--navy);
+            color: var(--navy);
+        }
+
+        .gallery-tab.active {
+            background: var(--navy);
+            border-color: var(--navy);
+            color: #fff;
+        }
+
+        .gallery-grid {
+            columns: 3 320px;
+            column-gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .gallery-item.tall img {
+            height: 380px;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(0deg, rgba(15, 30, 61, 0.95) 0%, rgba(15, 30, 61, 0.6) 60%, transparent 100%);
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .gallery-overlay h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        .gallery-zoom {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .gallery-zoom:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Hidden items for filter */
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        /* Lightbox */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            cursor: zoom-out;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Gallery Responsive */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                columns: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                columns: 1;
+            }
+
+            .gallery-item img,
+            .gallery-item.tall img {
+                height: 260px;
+            }
+
+            .gallery-filters {
+                gap: 0.5rem;
+            }
+
+            .gallery-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Shiny Blue Shiny Text Effect */
+        .shiny-blue-text {
+            color: #00f2fe;
+            /* fallback */
+        }
+
+        .shiny-blue-text span {
+            background: linear-gradient(to right, #001f3f, #007bff, #00f2fe, #007bff, #001f3f);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            animation: shine-blue-anim 6s linear infinite;
+        }
+
+        @keyframes shine-blue-anim {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 300% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-light" id="mainNav">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-wrench"></i>
+                    Heritage <span>Plumbing Pros</span>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn-lime">Schedule Appointment</a>
+                <a href="contact.html" class="btn-icon-circle"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <button class="mobile-menu-btn" style="color: #1a1c22;">&#9776;</button>
+        </div>
+    </nav>
+
+    <!-- NEW Hero Section — Clean White Design -->
+    <section class="hero-new">
+        <div class="liquid-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+
+        <h1 id="heroText"
+            style="font-family: 'Outfit', sans-serif; font-size: clamp(4.5rem, 9vw, 9rem); font-weight: 800; color: #18181b; line-height: 1.1; text-transform: uppercase; margin: 0 auto 1.5rem; max-width: 1300px; letter-spacing: -0.02em;">
+            Dependable Plumbing<br><span style="color: var(--navy);">Solutions</span> Within Your Reach</h1>
+
+
+
+        <div class="hero-cta-group hero-fade-in">
+            <a href="tel:8316765115" class="cta-outline">
+                <i class="fa-solid fa-phone"></i> (831) 676-5115
+            </a>
+            <a href="contact.html" class="btn-lime">
+                Schedule Appointment
+            </a>
+        </div>
+
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+                        <i class="fa-solid fa-wrench"></i>
+                        Heritage <span>Plumbing Pros</span>
+                    </a>
+                    <p>Dependable plumbing solutions within your reach. No cutting-corners, honest pricing.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fa-solid fa-phone" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                        (831) 676-5115</p>
+                    <p><i class="fa-solid fa-clock" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                        Mon-Sun: 7:00 AM - 5:00 PM</p>
+                    <p style="font-weight: 600;"><i class="fa-solid fa-truck-medical"
+                            style="margin-right: 0.5rem; color: var(--primary-color);"></i> Emergency Repairs</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Location</h4>
+                    <p>Serving Monterey, Santa Clara, and Santa Cruz Counties.</p>
+                    <p style="font-size: 0.85rem; margin-top: 1rem; color: var(--text-tertiary);">
+                        1520 Constitution Blvd<br>Salinas, CA 93905
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Heritage Plumbing Pros. All Rights Reserved. CA CSLB C-36 Licensed.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js?v=14"></script>
+</body>
+
+</html>

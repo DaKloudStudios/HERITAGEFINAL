@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gallery | Heritage Plumbing Pros</title>
+    <meta name="description"
+        content="Browse our portfolio of completed plumbing projects — bathroom remodels, water filtration systems, tankless water heaters, and more.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css?v=14">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ========================================
+           GALLERY PAGE — ROTATING CAROUSEL
+           ======================================== */
+
+        /* Hero */
+        .gallery-hero {
+            padding: 160px 0 40px;
+            text-align: center;
+            background: #fff;
+            position: relative;
+        }
+
+        .gallery-hero .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-surface);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 50px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery-hero .hero-badge i {
+            color: var(--navy);
+        }
+
+        .gallery-hero h1 {
+            font-size: 3.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.15;
+        }
+
+        .gallery-hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* ===== ROTATING CAROUSEL ===== */
+        .carousel-section {
+            padding: 0 0 5rem;
+            background: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Fade edges */
+        .carousel-section::before,
+        .carousel-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .carousel-section::before {
+            left: 0;
+            background: linear-gradient(90deg, #fff 0%, transparent 100%);
+        }
+
+        .carousel-section::after {
+            right: 0;
+            background: linear-gradient(270deg, #fff 0%, transparent 100%);
+        }
+
+        .carousel-track-wrapper {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            flex-wrap: nowrap !important;
+            gap: 2rem;
+            animation: scrollCarousel 120s linear infinite;
+            width: max-content;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollCarousel {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Cards */
+        .carousel-card {
+            flex: 0 0 600px;
+            height: 750px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            background: #f3f4f6;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+
+        .carousel-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .carousel-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .carousel-card:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Card label */
+        .carousel-card-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem 1.25rem 1.25rem;
+            background: linear-gradient(0deg, rgba(15, 30, 61, 0.9) 0%, transparent 100%);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .carousel-card:hover .carousel-card-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .carousel-card-label h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .carousel-card-label span {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== SECOND ROW (reverse direction) ===== */
+        .carousel-track.reverse {
+            animation: scrollCarouselReverse 35s linear infinite;
+        }
+
+        @keyframes scrollCarouselReverse {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== THIRD ROW ===== */
+        .carousel-track.row3 {
+            animation: scrollCarousel 40s linear infinite;
+        }
+
+        .row-gap {
+            height: 1.5rem;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lb-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lb-modal.active {
+            display: flex;
+        }
+
+        .lb-modal img {
+            max-width: 92%;
+            max-height: 92vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+            animation: lbIn 0.3s ease;
+        }
+
+        @keyframes lbIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lb-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lb-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===== CTA ===== */
+        .gallery-cta {
+            padding: 5rem 0;
+            text-align: center;
+            background: var(--bg-surface);
+        }
+
+        .gallery-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-cta p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto 2rem;
+        }
+
+        .gallery-cta .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 2rem;
+            background: var(--navy);
+            color: #fff;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(15, 30, 61, 0.3);
+        }
+
+        .gallery-cta .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 30, 61, 0.4);
+            color: #fff;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .gallery-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .carousel-card {
+                flex: 0 0 500px;
+                height: 625px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-hero {
+                padding: 140px 1rem 30px;
+            }
+
+            .gallery-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .carousel-card {
+                flex: 0 0 400px;
+                height: 500px;
+            }
+
+            .carousel-section::before,
+            .carousel-section::after {
+                width: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-wrench"></i>
+                    Heritage <span>Plumbing Pros</span>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn-lime">Schedule Appointment</a>
+                <a href="contact.html" class="btn-icon-circle"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <button class="mobile-menu-btn">&#9776;</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="gallery-hero">
+        <div class="container">
+            <div class="hero-badge"><i class="fa-solid fa-camera"></i> Real Projects, Real Results</div>
+            <h1>See Our Craftsmanship Up Close</h1>
+            <p>From precision repiping to luxury bathroom remodels — every project is a testament to our commitment to
+                quality.</p>
+        </div>
+    </section>
+
+    <!-- Rotating Carousel -->
+    <section class="carousel-section">
+
+        <!-- Row 1 — scrolls left -->
+        <div class="carousel-track-wrapper">
+            <div class="carousel-track" id="row1">
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_3_exposed_copper_1772657857706.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Individual_pictures_plumbing_work_106f5b3e32.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/gen_copper_pipes.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P2.webp" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Water_heater_plumbing_b2c9dbe0e5.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Can_you_do_something_similar_cf735a6c20.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P3.webp" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P6.webp" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/gen_water_heater.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Individual_pictures_plumbing_work_e9173dba96.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Can_you_do_something_similar_ef4cf5f666.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_2_freestanding_tub_1772657844260.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P4.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_7_outdoor_tankless_1772657923804.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_1_kitchen_faucet_1772657831394.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/gen_under_sink.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P5.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Can_you_do_something_similar_f9f5eb9618.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Something_like_this_9d6cb3583f.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/gen_bathroom_fixture.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P1.webp" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_8_plumber_hands_1772657937353.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Plumbing_pictures_e95a6d149b.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Pipes_for_a_sink_2a8ded9ffe.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_4_pex_manifold_1772657870985.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_3_exposed_copper_1772657857706.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Individual_pictures_plumbing_work_106f5b3e32.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/gen_copper_pipes.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P2.webp" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Water_heater_plumbing_b2c9dbe0e5.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Can_you_do_something_similar_cf735a6c20.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P3.webp" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P6.webp" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/gen_water_heater.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Individual_pictures_plumbing_work_e9173dba96.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Can_you_do_something_similar_ef4cf5f666.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_2_freestanding_tub_1772657844260.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P4.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_7_outdoor_tankless_1772657923804.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_1_kitchen_faucet_1772657831394.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/gen_under_sink.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P5.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Can_you_do_something_similar_f9f5eb9618.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Something_like_this_9d6cb3583f.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/gen_bathroom_fixture.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/P1.webp" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_8_plumber_hands_1772657937353.png" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Plumbing_pictures_e95a6d149b.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/Pipes_for_a_sink_2a8ded9ffe.jpeg" alt="Plumbing Project">
+                </div>
+                <div class="carousel-card" onclick="openLB(this)">
+                    <img src="FOTOS/plumbing_4_pex_manifold_1772657870985.png" alt="Plumbing Project">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Social Feeds -->
+    <section class="social-feeds-section"
+        style="padding: 3rem 0 5rem; background: var(--bg-surface); text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Follow Our Process</h2>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 550px; margin: 0 auto 3rem;">Watch our
+                latest behind-the-scenes transformations, daily operations, and professional plumbing tips.</p>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 4rem; align-items: start;">
+
+                <!-- TikTok Column -->
+                <div class="social-column">
+                    <div
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: #00f2fe; color: #fff; border-radius: 50%; font-size: 1.5rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(0,242,254,0.3);">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">TikTok</h3>
+                    <div style="display: flex; justify-content: center; width: 100%; overflow: hidden;">
+                        <iframe src="https://www.tiktok.com/embed/v2/7611424623900511519"
+                            style="width: 100%; height: 900px; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Instagram Column -->
+                <div class="social-column">
+                    <div
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; border-radius: 50%; font-size: 1.5rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Instagram</h3>
+                    <div style="display: flex; justify-content: center; width: 100%; overflow: hidden;">
+                        <iframe src="https://www.instagram.com/p/DVJz8L7En0j/embed" width="100%" height="900"
+                            frameborder="0" scrolling="no" allowtransparency="true"
+                            style="max-width: 100%; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+                        <i class="fa-solid fa-wrench"></i>
+                        Heritage <span>Plumbing Pros</span>
+                    </a>
+                    <p>Dependable plumbing solutions within your reach. No cutting-corners, honest pricing.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fa-solid fa-phone" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                        (831) 676-5115</p>
+                    <p><i class="fa-solid fa-clock" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                        Mon-Sun: 7:00 AM - 5:00 PM</p>
+                    <p style="font-weight: 600;"><i class="fa-solid fa-truck-medical"
+                            style="margin-right: 0.5rem; color: var(--primary-color);"></i> Emergency Repairs</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Location</h4>
+                    <p>Serving Monterey, Santa Clara, and Santa Cruz Counties.</p>
+                    <p style="font-size: 0.85rem; margin-top: 1rem; color: var(--text-tertiary);">
+                        1520 Constitution Blvd<br>Salinas, CA 93905
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Heritage Plumbing Pros. All Rights Reserved. CA CSLB C-36 Licensed.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lb-modal" id="lbModal" onclick="closeLB(event)">
+        <button class="lb-close" onclick="closeLB(event)">&times;</button>
+        <img src="" alt="" id="lbImg">
+    </div>
+
+    <script src="main.js?v=14"></script>
+    <script>
+        // Lightbox
+        function openLB(card) {
+            const img = card.querySelector('img');
+            document.getElementById('lbImg').src = img.src;
+            document.getElementById('lbImg').alt = img.alt;
+            document.getElementById('lbModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLB(e) {
+            if (e.target === document.getElementById('lbImg')) return;
+            document.getElementById('lbModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('lbModal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+
+</html>

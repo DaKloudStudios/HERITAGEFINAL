@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials & Trust | Heritage Plumbing Pros</title>
+    <meta name="description"
+        content="Read verified consumer reviews and learn about our Thumbtack Top Pro status and photographic proof guarantee.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css?v=14">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .thumbtack-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 16px;
+            max-width: 800px;
+            margin: 20px auto var(--spacing-xxl);
+            /* Changed top margin from -40px to 20px */
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            flex-wrap: wrap;
+        }
+
+        .thumbtack-logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: #009688;
+            /* Thumbtack color approx */
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .thumbtack-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
+        /* Reviews Grid */
+        .reviews-section {
+            padding-bottom: var(--spacing-xxl);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .review-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            padding-top: 3rem;
+            /* Space for quote icon */
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -20px;
+            left: 2rem;
+            font-size: 5rem;
+            color: rgba(0, 162, 255, 0.15);
+            z-index: -1;
+        }
+
+        .stars {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.35rem;
+        }
+
+        .review-text {
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--text-primary);
+            flex-grow: 1;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bg-surface-elevated) 0%, var(--bg-dark) 100%);
+            border: 2px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .author-info h4 {
+            margin-bottom: 0;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .author-info p {
+            margin-bottom: 0;
+            font-size: 1rem;
+            color: var(--text-tertiary);
+        }
+
+        .review-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(38, 219, 114, 0.1);
+            color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(38, 219, 114, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-dark) 100%);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            padding: var(--spacing-xxl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guarantee-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+            position: relative;
+            z-index: 2;
+        }
+
+        .guarantee-text {
+            flex: 1;
+        }
+
+        .guarantee-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .guarantee-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .camera-icon-wrapper {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 162, 255, 0.1) 0%, rgba(0, 162, 255, 0) 70%);
+        }
+
+        .camera-icon-wrapper::before,
+        .camera-icon-wrapper::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 162, 255, 0.2);
+            animation: pulse 3s linear infinite;
+        }
+
+        .camera-icon-wrapper::after {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .guarantee-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .thumbtack-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .review-badge {
+                top: auto;
+                bottom: 2rem;
+            }
+        }
+
+        /* Testimonials Grid Layout */
+        .reviews-section {
+            padding-bottom: var(--spacing-xxl);
+            padding-top: var(--spacing-xl);
+            position: relative;
+        }
+
+        .reviews-carousel-container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .reviews-carousel {
+            display: contents;
+            /* Allows children to participate in the container's grid */
+        }
+
+        .review-showcase-item {
+            display: flex;
+            height: 100%;
+        }
+
+        .review-card {
+            width: 100%;
+            margin: 0;
+            padding: 3rem 2rem 2rem;
+            /* Adjusted padding for 3D fit */
+        }
+
+        @media (max-width: 1024px) {
+            .reviews-carousel-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .reviews-carousel-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @property --border-angle {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: 0deg;
+        }
+
+        .animated-borderbox::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            border: 4px solid transparent;
+            background: conic-gradient(from var(--border-angle),
+                    transparent 0%,
+                    rgba(73, 142, 230, 0.3) 10%,
+                    rgb(73, 142, 230) 20%,
+                    #00a2ff 25%,
+                    rgb(73, 142, 230) 30%,
+                    rgba(73, 142, 230, 0.3) 40%,
+                    transparent 50%,
+                    transparent 50%,
+                    rgba(73, 142, 230, 0.3) 60%,
+                    rgb(73, 142, 230) 70%,
+                    #00a2ff 75%,
+                    rgb(73, 142, 230) 80%,
+                    rgba(73, 142, 230, 0.3) 90%,
+                    transparent 100%) border-box;
+
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+
+            pointer-events: none;
+            z-index: 10;
+            animation: waterBorderRotate 4s linear infinite;
+        }
+
+        @keyframes waterBorderRotate {
+            to {
+                --border-angle: 360deg;
+            }
+        }
+
+        /* ========================================
+           PREMIUM ANIMATED BACKGROUND & GLASSMORPHISM
+           ======================================== */
+        .premium-animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -10;
+            background: linear-gradient(120deg, #091225, #0f1e3d, #1a3160, #00509e, #0f1e3d);
+            background-size: 300% 300%;
+            animation: gradient-flow 18s ease infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Glassmorphism Overrides */
+        body {
+            background-color: transparent !important;
+            color: #fff !important;
+        }
+
+        .navbar {
+            background: rgba(9, 18, 37, 0.6) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        }
+
+        .navbar.scrolled {
+            background: rgba(9, 18, 37, 0.95) !important;
+        }
+
+        .nav-links a,
+        .logo {
+            color: #fff !important;
+        }
+
+        .nav-links a::after {
+            background-color: #00f2fe !important;
+        }
+
+        .btn-icon-circle {
+            color: #fff !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .page-header {
+            background: transparent !important;
+            border-bottom: none !important;
+            padding-bottom: 40px !important;
+        }
+
+        .thumbtack-banner {
+            background: rgba(255, 255, 255, 0.03) !important;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .stat-value {
+            color: #00f2fe !important;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        .thumbtack-logo {
+            color: #00f2fe !important;
+        }
+
+        .review-card {
+            background: rgba(15, 30, 61, 0.4) !important;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        .review-text {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        .author-info h4 {
+            color: #fff !important;
+        }
+
+        .author-info p {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        .author-avatar {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: #00f2fe !important;
+            border-color: rgba(0, 242, 254, 0.3) !important;
+        }
+
+        .stars {
+            color: #00f2fe !important;
+        }
+
+        .review-badge {
+            background: rgba(0, 242, 254, 0.1) !important;
+            color: #00f2fe !important;
+            border-color: rgba(0, 242, 254, 0.3) !important;
+        }
+
+        .quote-icon {
+            color: rgba(0, 242, 254, 0.1) !important;
+        }
+
+        .cta-section-premium h2 {
+            color: #fff !important;
+        }
+
+        .cta-section-premium p {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="premium-animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-wrench"></i>
+                    Heritage <span>Plumbing Pros</span>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="testimonials.html" class="active">Testimonials</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn-lime">Schedule Appointment</a>
+                <a href="contact.html" class="btn-icon-circle"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <button class="mobile-menu-btn" style="color: #fff;">&#9776;</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container reveal">
+            <h1>Verified <span style="color: #fff;">Excellence</span> & Uncompromising Trust</h1>
+            <p>In an industry historically clouded by skepticism and corporate fatigue, Heritage Plumbing Pros stands
+                apart. We are incredibly proud of our absolute algorithmic dominance and the verified peace of mind we
+                bring to every single job site.</p>
+        </div>
+    </header>
+
+    <!-- Thumbtack Dominance Banner -->
+    <div class="container">
+        <div class="thumbtack-banner reveal animated-borderbox" style="transition-delay: 0.2s;">
+            <div class="thumbtack-logo">
+                <i class="fa-solid fa-thumbtack"></i> Thumbtack
+            </div>
+            <div class="thumbtack-stats">
+                <div class="stat-item">
+                    <div class="stat-value">5.0</div>
+                    <div class="stat-label">Exceptional Rating</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value"><i class="fa-solid fa-trophy"
+                            style="font-size: 1.5rem; margin-right: 0.2rem;"></i> Top Pro</div>
+                    <div class="stat-label">Algorithmic Status</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">56+</div>
+                    <div class="stat-label">Verified Background Checks</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="reviews-carousel-container">
+                <div class="reviews-carousel" id="testimonialsCarousel">
+
+                    <!-- Review 1 -->
+                    <div class="review-showcase-item">
+                        <div class="glass-card review-card reveal animated-borderbox" style="transition-delay: 0.1s;">
+                            <i class="fa-solid fa-quote-left quote-icon"></i>
+                            <div class="review-badge"><i class="fa-solid fa-circle-check"></i> Verified Hire</div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text">"When we had a catastrophic midnight leak in a dark, hard-to-reach
+                                crawl
+                                space, Yessiel responded urgently. He was super thorough and even took extensive 'before
+                                and
+                                after' photos to show us exactly what was fixed. Complete peace of mind."</p>
+                            <div class="review-author">
+                                <div class="author-avatar">R</div>
+                                <div class="author-info">
+                                    <h4>Raquel M.</h4>
+                                    <p>Rapid Emergency Response</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review-showcase-item">
+                        <div class="glass-card review-card reveal animated-borderbox" style="transition-delay: 0.2s;">
+                            <i class="fa-solid fa-quote-left quote-icon"></i>
+                            <div class="review-badge"><i class="fa-solid fa-circle-check"></i> Verified Hire</div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text">"Yessiel and his team were incredible. We needed a complete toilet
+                                replacement, and they had the old one out and the new one perfectly installed in under a
+                                single
+                                hour! Unmatched speed and precision."</p>
+                            <div class="review-author">
+                                <div class="author-avatar">K</div>
+                                <div class="author-info">
+                                    <h4>Kory V.</h4>
+                                    <p>Speed & Efficiency</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-showcase-item">
+                        <div class="glass-card review-card reveal animated-borderbox" style="transition-delay: 0.3s;">
+                            <i class="fa-solid fa-quote-left quote-icon"></i>
+                            <div class="review-badge"><i class="fa-solid fa-circle-check"></i> Verified Hire</div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text">"Not only did they fix our plumbing issues perfectly, but they left
+                                our home
+                                cleaner than they found it. They hauled away all the heavy debris—including an old
+                                ceramic
+                                toilet, rusted metal piping, and tons of cardboard packaging. True professionals."</p>
+                            <div class="review-author">
+                                <div class="author-avatar">S</div>
+                                <div class="author-info">
+                                    <h4>Stephen D.</h4>
+                                    <p>Immaculate Site Cleanup</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review-showcase-item">
+                        <div class="glass-card review-card reveal animated-borderbox" style="transition-delay: 0.1s;">
+                            <i class="fa-solid fa-quote-left quote-icon"></i>
+                            <div class="review-badge"><i class="fa-solid fa-circle-check"></i> Verified Hire</div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text">"I thought we had a total slab leak nightmare on our hands. The team
+                                traced the
+                                leak acoustically without tearing up our expensive hardwood floors. Absolutely stellar
+                                diagnostic work."</p>
+                            <div class="review-author">
+                                <div class="author-avatar">D</div>
+                                <div class="author-info">
+                                    <h4>Daniel W.</h4>
+                                    <p>Slab Leak Detection</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="review-showcase-item">
+                        <div class="glass-card review-card reveal animated-borderbox" style="transition-delay: 0.2s;">
+                            <i class="fa-solid fa-quote-left quote-icon"></i>
+                            <div class="review-badge"><i class="fa-solid fa-circle-check"></i> Verified Hire</div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text">"Replaced two massive rusted commercial water heaters with a sleek
+                                tankless
+                                manifold system. Infinite hot water now, and they didn't even nickel-and-dime us for
+                                hauling the old tanks away."</p>
+                            <div class="review-author">
+                                <div class="author-avatar">C</div>
+                                <div class="author-info">
+                                    <h4>Cameron R.</h4>
+                                    <p>Tankless Upgrade</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 6 -->
+                    <div class="review-showcase-item">
+                        <div class="glass-card review-card reveal animated-borderbox" style="transition-delay: 0.3s;">
+                            <i class="fa-solid fa-quote-left quote-icon"></i>
+                            <div class="review-badge"><i class="fa-solid fa-circle-check"></i> Verified Hire</div>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text">"We undertook a massive historic home renovation requiring a full
+                                copper repiping.
+                                Heritage navigated the plaster walls flawlessly and delivered on schedule. The
+                                craftsmanship is art."</p>
+                            <div class="review-author">
+                                <div class="author-avatar">P</div>
+                                <div class="author-info">
+                                    <h4>Penelope T.</h4>
+                                    <p>Full Home Repiping</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+                        <i class="fa-solid fa-wrench"></i>
+                        Heritage <span>Plumbing Pros</span>
+                    </a>
+                    <p>Dependable plumbing solutions within your reach. No cutting-corners, honest pricing.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fa-solid fa-phone" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                        (831) 676-5115</p>
+                    <p><i class="fa-solid fa-clock" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                        Mon-Sun: 7:00 AM - 5:00 PM</p>
+                    <p style="font-weight: 600;"><i class="fa-solid fa-truck-medical"
+                            style="margin-right: 0.5rem; color: var(--primary-color);"></i> Emergency Repairs</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Location</h4>
+                    <p>Serving Monterey, Santa Clara, and Santa Cruz Counties.</p>
+                    <p style="font-size: 0.85rem; margin-top: 1rem; color: var(--text-tertiary);">
+                        1520 Constitution Blvd<br>Salinas, CA 93905
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Heritage Plumbing Pros. All Rights Reserved. CA CSLB C-36 Licensed.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js?v=14"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Heritage Plumbing Pros</title>
+    <meta name="description"
+        content="Schedule an appointment or call for emergency repair. Serving Monterey, Santa Clara, and Santa Cruz counties.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css?v=14">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            padding: var(--spacing-xxl) 0;
+            position: relative;
+        }
+
+        /* Contact Information Sidebar */
+        .contact-info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .emergency-banner {
+            background: rgba(247, 49, 49, 0.1);
+            border: 1px solid rgba(247, 49, 49, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .emergency-banner h3 {
+            color: #ff4d4d;
+            margin-bottom: 0.5rem;
+            justify-content: center;
+        }
+
+        .phone-huge {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            display: block;
+            margin: 1rem 0;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .detail-list {
+            list-style: none;
+        }
+
+        .detail-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .detail-list li i {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: var(--primary-color);
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            font-size: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .payment-icons i {
+            transition: color var(--transition-fast);
+        }
+
+        .payment-icons i:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            position: sticky;
+            top: 100px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+
+        .form-control::placeholder {
+            color: #666;
+            /* Darker placeholder for better visibility on white bg */
+            opacity: 1;
+            /* Firefox sets this to less than 1 by default */
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 162, 255, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-container {
+                position: static;
+                order: -1;
+                /* Move form above info on mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-wrench"></i>
+                    Heritage <span>Plumbing Pros</span>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn-lime">Schedule Appointment</a>
+                <a href="contact.html" class="btn-icon-circle"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <button class="mobile-menu-btn" style="color: #fff;">&#9776;</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container reveal">
+            <h1>Ready for <span style="color: #fff;">Dependable</span> Plumbing Solutions?</h1>
+            <p>We've removed all the friction. Transparent pricing, massive service area, and every payment method
+                accepted.</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="contact-layout">
+
+            <!-- Contact Info Panel -->
+            <div class="contact-info-panel reveal">
+
+
+
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-phone-volume"></i> Direct Communication</h3>
+                    <a href="tel:8316765115" class="phone-huge">(831) 676-5115</a>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-clock"></i> Standard Operating Hours</h3>
+                    <p>Monday – Sunday: <strong>7:00 AM - 5:00 PM (PST)</strong></p>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-map-location-dot"></i> Our Coverage Zone</h3>
+                    <p>We proudly and efficiently dispatch to the diverse communities of the Tri-County area:</p>
+                    <ul class="detail-list">
+                        <li><i class="fa-solid fa-location-arrow"></i> <strong>Monterey County</strong></li>
+                        <li><i class="fa-solid fa-location-arrow"></i> <strong>Santa Clara County</strong></li>
+                        <li><i class="fa-solid fa-location-arrow"></i> <strong>Santa Cruz County</strong></li>
+                    </ul>
+                    <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-tertiary);">Including: Salinas,
+                        Gilroy, Seaside, Soledad, and surrounding areas.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-credit-card"></i> Frictionless Payments</h3>
+                    <p>We make the payment process as smooth as our pipe installations. We accept a massive spectrum of
+                        payment modalities:</p>
+                    <div class="payment-icons">
+                        <i class="fa-brands fa-apple-pay" title="Apple Pay"></i>
+                        <i class="fa-brands fa-google-pay" title="Google Pay"></i>
+                        <i class="fa-solid fa-money-bill-transfer" title="Zelle / Cash App"></i>
+                        <i class="fa-brands fa-cc-visa" title="Visa"></i>
+                        <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fa-solid fa-money-bill-wave" title="Cash"></i>
+                        <i class="fa-solid fa-money-check" title="Check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container reveal" style="transition-delay: 0.2s;">
+                <div class="glass-card glowing-blue-box">
+                    <h2 style="font-size: 2rem; margin-bottom: 2rem;">Schedule Appointment Here!</h2>
+
+                    <!-- Form currently submitts nowhere as this is a frontend build -->
+                    <form action="#" method="POST"
+                        onsubmit="event.preventDefault(); alert('Demo: Form submitted successfully!');">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="(831) 555-0123" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address (Optional)</label>
+                            <input type="email" id="email" class="form-control" placeholder="johndoe@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service" class="form-label">Service Needed</label>
+                            <select id="service" class="form-control" required
+                                style="appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%239aa0a6%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65em auto;">
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="emergency">Emergency Repair (Immediate)</option>
+                                <option value="general">General Plumbing Repair</option>
+                                <option value="repiping">Systemic infrastructure / Repiping</option>
+                                <option value="remodel">Architectural Remodel / Shower Installation</option>
+                                <option value="water_quality">Water Filtration System</option>
+                                <option value="exterior">Exterior Drainage</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Project Details</label>
+                            <textarea id="message" class="form-control"
+                                placeholder="Please describe your plumbing issue or remodeling project..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="animated-button">
+                            <p>Request Professional Service</p>
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="bg-glow-blue" style="bottom: 0; left: 0;"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+                        <i class="fa-solid fa-wrench"></i>
+                        Heritage <span>Plumbing Pros</span>
+                    </a>
+                    <p>Dependable plumbing solutions within your reach. No cutting-corners, honest pricing.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fa-solid fa-phone" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                        (831) 676-5115</p>
+                    <p><i class="fa-solid fa-clock" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                        Mon-Sun: 7:00 AM - 5:00 PM</p>
+                    <p style="font-weight: 600;"><i class="fa-solid fa-truck-medical"
+                            style="margin-right: 0.5rem; color: var(--primary-color);"></i> Emergency Repairs</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Location</h4>
+                    <p>Serving Monterey, Santa Clara, and Santa Cruz Counties.</p>
+                    <p style="font-size: 0.85rem; margin-top: 1rem; color: var(--text-tertiary);">
+                        1520 Constitution Blvd<br>Salinas, CA 93905
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Heritage Plumbing Pros. All Rights Reserved. CA CSLB C-36 Licensed.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js?v=14"></script>
+</body>
+
+</html>

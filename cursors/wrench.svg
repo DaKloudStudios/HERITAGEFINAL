@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="36" height="36">
+  <defs>
+    <!-- Use a mask to ensure a STRICTLY transparent cutout for the crescent jaws -->
+    <mask id="jaw">
+      <rect width="100" height="100" fill="white" />
+      <!-- The black rectangle represents the empty space between the wrench jaws -->
+      <rect x="42" y="5" width="16" height="25" fill="black" />
+    </mask>
+  </defs>
+
+  <!-- Rotate the entire wrench so it points to the top left like a traditional cursor -->
+  <g transform="rotate(-40 50 50)">
+    <!-- Tapered Spike (Handle of the Spud Wrench) -->
+    <path d="M46,35 L54,35 L52,95 C52,98 48,98 48,95 Z" fill="#808080" />
+    
+    <!-- Bulbous Head with the jaw cutout -->
+    <circle cx="50" cy="28" r="16" fill="#808080" mask="url(#jaw)" />
+    
+    <!-- Inner metallic accent -->
+    <path d="M48,40 L52,40 L50.5,88 L49.5,88 Z" fill="#ffffff" opacity="0.15" />
+    <circle cx="50" cy="28" r="14" fill="transparent" stroke="#ffffff" stroke-width="1.5" opacity="0.15" mask="url(#jaw)" />
+  </g>
+</svg>
