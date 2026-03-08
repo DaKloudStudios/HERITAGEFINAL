@@ -148,6 +148,11 @@
             /* Firefox sets this to less than 1 by default */
         }
 
+        .navbar .logo,
+        .navbar .logo span {
+            color: var(--text-primary) !important;
+        }
+
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
@@ -186,8 +191,9 @@
         <div class="nav-container">
             <div class="logo-wrapper">
                 <a href="index.html" class="logo">
-                    <i class="fa-solid fa-wrench"></i>
-                    Heritage <span>Plumbing Pros</span>
+                    <img src="assets/logo.png" alt="Heritage Plumbing Pros Logo"
+                        style="height: 65px; width: auto; max-width: 300px; margin-top: 5px; object-fit: contain;">
+                    <span style="font-size: 1.2rem; margin-left: 0.5rem;">HERITAGE PLUMBING PROS</span>
                 </a>
             </div>
 
@@ -388,9 +394,11 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
-                        <i class="fa-solid fa-wrench"></i>
-                        Heritage <span>Plumbing Pros</span>
+                    <a href="index.html" class="logo"
+                        style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                        <img src="assets/logo.png" alt="Heritage Plumbing Pros Logo"
+                            style="height: 50px; width: auto; max-width: 250px; object-fit: contain;">
+                        <span style="font-size: 1.2rem; font-weight: 700;">HERITAGE PLUMBING PROS</span>
                     </a>
                     <p>Dependable plumbing solutions within your reach. No cutting-corners, honest pricing.</p>
                 </div>

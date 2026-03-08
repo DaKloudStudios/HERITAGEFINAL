@@ -107,29 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-    // ========================================
-    // LIQUID BACKGROUND TRACKING
-    // ========================================
-    const heroSection = document.querySelector('.hero-new');
-    if (heroSection) {
-        const updateBlobPosition = (clientX, clientY) => {
-            const rect = heroSection.getBoundingClientRect();
-            const x = clientX - rect.left;
-            const y = clientY - rect.top;
-            heroSection.style.setProperty('--x', `${x}px`);
-            heroSection.style.setProperty('--y', `${y}px`);
-        };
-
-        heroSection.addEventListener('mousemove', (e) => {
-            updateBlobPosition(e.clientX, e.clientY);
-        });
-
-        heroSection.addEventListener('touchmove', (e) => {
-            if (e.touches.length > 0) {
-                updateBlobPosition(e.touches[0].clientX, e.touches[0].clientY);
-            }
-        }, { passive: true });
-    }
 
     // ========================================
     // CUSTOM WRENCH CURSOR
