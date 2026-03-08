@@ -722,24 +722,87 @@
                 font-size: 2.2rem;
             }
 
+            /* --- Disable 3D carousel, stack cards vertically --- */
+            .services-showcase {
+                padding: 2rem 0;
+                perspective: none;
+                overflow: visible;
+            }
+
             .services-carousel-container {
-                height: 900px;
+                height: auto;
+                position: relative;
+            }
+
+            .services-carousel {
+                position: relative;
+                transform-style: flat;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                transform: none !important;
+            }
+
+            .service-showcase-item {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                width: 100% !important;
+                height: auto !important;
+                transform: none !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                backface-visibility: visible;
+            }
+
+            .service-card-premium {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .service-card-premium.reverse {
+                direction: ltr;
+            }
+
+            .service-visual-side {
+                height: 220px;
+                min-height: auto;
             }
 
             .service-content-side {
-                padding: 2rem;
+                padding: 1.5rem;
             }
 
             .service-content-side h2 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
             .service-features {
                 grid-template-columns: 1fr;
             }
 
-            .services-showcase {
-                padding: 3rem 0;
+            /* Fix CTA link visibility on dark glassmorphism bg */
+            .service-cta-link {
+                color: #00f2fe !important;
+                font-size: 0.95rem;
+                padding: 0.6rem 0;
+            }
+
+            .service-tag {
+                color: #00f2fe !important;
+            }
+
+            .service-tag::before {
+                background: #00f2fe !important;
+            }
+
+            .service-number {
+                font-size: 5rem;
+            }
+
+            /* Hide carousel controls on mobile (cards are all visible) */
+            .carousel-controls {
+                display: none;
             }
 
             .why-choose-grid {
@@ -802,6 +865,12 @@
         .nav-links a,
         .logo {
             color: #fff !important;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links a {
+                color: #1a1c22 !important;
+            }
         }
 
         .nav-links a::after {
