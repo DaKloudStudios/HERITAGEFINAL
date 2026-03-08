@@ -666,20 +666,21 @@
             /* Allow canvas to receive events if needed, but we bind mousemove/click to window anyway */
         }
 
-        /* Logo 3D Rotation Animation */
-        .logo-rocking {
+        /* Hero Logo Breathing Animation */
+        .logo-breathe {
             display: inline-block;
-            transform-style: preserve-3d;
-            animation: rotate3d 8s linear infinite;
+            animation: breathe 3s ease-in-out infinite;
         }
 
-        @keyframes rotate3d {
-            from {
-                transform: perspective(1000px) rotateY(0deg);
+        @keyframes breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
             }
 
-            to {
-                transform: perspective(1000px) rotateY(360deg);
+            50% {
+                transform: scale(1.06);
             }
         }
     </style>
@@ -720,7 +721,7 @@
         <div class="dot-grid-container" id="heroDotGrid"></div>
 
         <div class="hero-fade-in" style="margin-bottom: 2rem; position: relative; z-index: 2;">
-            <img src="assets/logo.png" alt="Heritage Plumbing Pros Logo" class="logo-rocking"
+            <img src="assets/logo.png" alt="Heritage Plumbing Pros Logo" class="logo-breathe"
                 style="height: auto; width: 100%; max-width: 480px; object-fit: contain;">
         </div>
 
